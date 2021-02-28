@@ -14,12 +14,22 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="products-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Products
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <div class="dropdown-menu" aria-labelledby="products-dropdown">
             <a class="dropdown-item" href="<%= products_path%>">Index</a>
             <a class="dropdown-item" href="<%= new_product_path%>">New</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="criteria-definitions-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Criteria definitions
+          </a>
+          <div class="dropdown-menu" aria-labelledby="criteria-definitions-dropdown">
+            <a class="dropdown-item" href="<%= criteria_definitions_path%>">Index</a>
+            <a class="dropdown-item" href="<%= new_criteria_definition_path%>">New</a>
           </div>
         </li>
       </ul>

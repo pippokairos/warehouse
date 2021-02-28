@@ -1,0 +1,23 @@
+<%= form_for(criteria_definition) do |f| %>
+  <div class="form-group">
+    <%= f.label :references %>
+    <%= f.text_field :references, name: "criteria_definition[references][]", value: criteria_definition.references&.join(", "), class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :categories %>
+    <%= f.text_field :categories, name: "criteria_definition[categories][]", value: criteria_definition.categories&.join(", "), class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :max_price %>
+    <%= f.text_field :max_price, class: "form-control" %>
+  </div>
+
+  <div class="form-group required">
+    <%= f.label :destination %>
+    <%= f.text_field :destination, class: "form-control", required: true %>
+  </div>
+
+  <%= f.submit submit_text || "Submit", class: "btn btn-primary" %>
+<% end %>

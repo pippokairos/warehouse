@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_150226) do
+ActiveRecord::Schema.define(version: 2021_02_28_132521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "criteria_definitions", force: :cascade do |t|
+    t.string "references", array: true
+    t.string "categories", array: true
+    t.decimal "max_price", precision: 8, scale: 2
+    t.string "destination"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "products", primary_key: "reference", id: :string, force: :cascade do |t|
     t.string "name"

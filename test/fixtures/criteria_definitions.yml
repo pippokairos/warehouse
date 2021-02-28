@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+1:
+  references:
+    - "Reference test"
+  categories: 
+    - "Category test"
+  max_price: 20
+  destination: Destination test
+
+2:
+  references:
+    - "Reference test 2"
+  categories: 
+    - "Category test 2"
+  max_price: 10
+  destination: Destination test 2

@@ -1,0 +1,32 @@
+<h1>Criteria definitions list</h1>
+
+<% if @criteria_definitions.empty? %>
+  <p>There are no criteria definitions... Maybe <a href="<%= new_criteria_definition_path %>">create a new one?</a></p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">References</th>
+        <th scope="col">Categories</th>
+        <th scope="col">Max price</th>
+        <th scope="col">Destination</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @criteria_definitions.each do |criteria_definition| %>
+        <tr>
+          <th scope="row"><%= link_to criteria_definition.id, criteria_definition_path(criteria_definition) %></th>
+          <td><%= criteria_definition.references&.join(", ") %></td>
+          <td><%= criteria_definition.categories&.join(", ") %></td>
+          <td><%= criteria_definition.max_price %></td>
+          <td><%= criteria_definition.destination %></td>
+          <td><a href="<%= edit_criteria_definition_path(criteria_definition) %>"><button type="button" class="btn btn-primary btn-sm">Edit</button></a></td>
+          <td><%= button_to "Destroy", criteria_definition_path(criteria_definition), method: :delete, data: { confirm: "Are you sure you want to delete #{criteria_definition.id}?" }, class: "btn btn-sm btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

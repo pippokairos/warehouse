@@ -1,0 +1,5 @@
+<h1>Product <%= @product.reference %></h1>
+
+<p>Name: <%= @product.name %></p>
+<p>Category: <%= @product.category %></p>
+<p>Price: <%= number_to_currency(@product.price, unit: "€") %></p>

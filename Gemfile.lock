@@ -100,6 +100,9 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.4)
+    minitest-rails (6.0.1)
+      minitest (~> 5.10)
+      railties (~> 6.0.0)
     msgpack (1.4.2)
     nio4r (2.5.5)
     nokogiri (1.11.1)
@@ -200,6 +203,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   listen (~> 3.2)
+  minitest-rails
   pg
   puma (~> 4.3.6)
   rails (~> 6.0.3, >= 6.0.3.5)

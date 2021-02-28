@@ -1,0 +1,23 @@
+1:
+  reference: "001"
+  name: "001"
+  category: "Electronics"
+  price: 9.99
+
+2:
+  reference: "002"
+  name: "002"
+  category: "Electronics"
+  price: 19.99
+
+3:
+  reference: "003"
+  name: "003"
+  category: "Electronics"
+  price: 0.50
+
+4:
+  reference: "004"
+  name: "004"
+  category: "Electronics"
+  price: 54.49

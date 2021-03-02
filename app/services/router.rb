@@ -26,5 +26,4 @@ class Router
     res += " OR '#{value}' = ANY(criteria_definitions.#{field})" if value.present?
     res
   end
-
 end

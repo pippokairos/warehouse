@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "routes#index"
+
   resources :products
   resources :criteria_definitions
   resources :routes, only: [:index] do

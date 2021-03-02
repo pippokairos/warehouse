@@ -1,0 +1,31 @@
+<h1>Routes</h1>
+
+<h5>Search by product reference</h5>
+
+<%= form_tag "/routes/search" do %>
+  <div class="form-group required">
+    <%= label_tag :reference %>
+    <%= text_field_tag :reference, @router&.product&.reference, { class: "form-control", required: true } %>
+  </div>
+
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<% if @router %>
+  <div class="card mt-4">
+    <h5 class="card-header">
+      Destination: <%= @router.criteria_definition&.destination || "Not found!" %>
+    </h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Product: <a href="<%= product_path(@router.product) %>"><%= "#{@router.product.reference} - #{@router.product.name}" %></a>
+      </li>
+      <% if @router.criteria_definition %>
+        <li class="list-group-item">Criteria definition:
+          <a href="<%= criteria_definition_path(@router.criteria_definition) %>"><%= @router.criteria_definition.id %></a>
+          (references: <%= @router.criteria_definition.references&.join(", ") || "null" %> | categories: <%= @router.criteria_definition.categories&.join(", ") || "null" %> | max_price: <%= number_to_currency(@router.criteria_definition.max_price, unit: "€") || "null" %>)
+        </li>
+      <% end %>
+    </div>
+  </div>
+<% end %>

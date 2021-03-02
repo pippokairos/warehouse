@@ -1,17 +1,35 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-1:
+"Amsterdam":
   references:
-    - "Reference test"
+    - "A1"
+    - "A2"
   categories: 
-    - "Category test"
+    - "Category A1"
+    - "Category A2"
   max_price: 20
-  destination: Destination test
+  destination: Amsterdam
 
-2:
+"Rome":
   references:
-    - "Reference test 2"
+    - "B1"
+    - "B2"
   categories: 
-    - "Category test 2"
+    - "Category B1"
+    - "Category B2"
   max_price: 10
-  destination: Destination test 2
+  destination: Rome
+
+"London":
+  references:
+    - "B1"
+  categories: null
+  max_price: null
+  destination: London
+
+"Madrid":
+  references:
+    - "B1"
+  categories: null
+  max_price: 10
+  destination: Madrid

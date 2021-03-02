@@ -15,4 +15,15 @@ class CriteriaDefinitionTest < ActiveSupport::TestCase
     )
     assert_not criteria_definition.valid?
   end
+
+  test "degree of specificity should return 1 if only one field is present" do
+    criteria_definition = CriteriaDefinition.new(references: ["Test"], destination: "Destination Test")
+    assert 1, criteria_definition.degree_of_specificity
+
+    criteria_definition = CriteriaDefinition.new(categories: ["Test"], destination: "Destination Test")
+    assert 1, criteria_definition.degree_of_specificity
+
+    criteria_definition = CriteriaDefinition.new(max_price: 20, destination: "Destination Test")
+    assert 1, criteria_definition.degree_of_specificity
+  end
 end

@@ -5,12 +5,19 @@ class CriteriaDefinition < ApplicationRecord
 
   before_save :strip_and_sort_array_fields
 
+  # Used to determine the best fitting criteria_definition for a product
+  def degree_of_specificity
+    [references, categories, max_price].map do |attribute|
+      attribute.blank? ? 0 : 1
+    end.sum
+  end
+
   private
 
   def strip_and_sort_array_fields
     [:references, :categories].each do |attribute|
       if self[attribute].present?
-        value = self[attribute].map(&:strip).reject!(&:blank?)&.sort
+        value = self[attribute].map(&:strip).reject(&:blank?)&.sort
         self[attribute] = value.blank? ? nil : value
       end
     end

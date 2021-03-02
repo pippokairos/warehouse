@@ -1,6 +1,25 @@
-<h1>Criteria definition <%= @criteria_definition.id %></h1>
+<div class="card mt-4">
+  <h5 class="card-header">
+    Criteria definition <%= @criteria_definition.id %>
+  </h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      References: <%= @criteria_definition.references&.join(", ") %>
+    </li>
+    <li class="list-group-item">
+      Categories: <%= @criteria_definition.categories&.join(", ") %>
+    </li>
+    <li class="list-group-item">
+      Max price: <%= number_to_currency(@criteria_definition.max_price, unit: "€") %>
+    </li>
+    <li class="list-group-item">
+      Max price: <%= @criteria_definition.destination %>
+    </li>
+  </ul>
+</div>
 
-<p>References: <%= @criteria_definition.references %></p>
-<p>Categories: <%= @criteria_definition.categories %></p>
-<p>Max price: <%= @criteria_definition.max_price %></p>
-<p>Destination: <%= @criteria_definition.destination %></p>
+<div class="mt-4">
+  <a href="<%= edit_criteria_definition_path(@criteria_definition) %>">
+    <button type="button" class="btn btn-primary btn-sm">Edit</button>
+  </a>
+</div>

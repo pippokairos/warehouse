@@ -1,5 +1,22 @@
-<h1>Product <%= @product.reference %></h1>
+<div class="card mt-4">
+  <h5 class="card-header">
+    Product <%= @product.reference %>
+  </h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      Name: <%= @product.name %>
+    </li>
+    <li class="list-group-item">
+      Category: <%= @product.category %>
+    </li>
+    <li class="list-group-item">
+      Price: <%= number_to_currency(@product.price, unit: "€") %>
+    </li>
+  </ul>
+</div>
 
-<p>Name: <%= @product.name %></p>
-<p>Category: <%= @product.category %></p>
-<p>Price: <%= number_to_currency(@product.price, unit: "€") %></p>
+<div class="mt-4">
+  <a href="<%= edit_product_path(@product) %>">
+    <button type="button" class="btn btn-primary btn-sm">Edit</button>
+  </a>
+</div>

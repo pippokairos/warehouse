@@ -58,7 +58,7 @@ describe CriteriaDefinitionsController do
       end
 
       test "should get the show criteria definition page" do
-        assert_select "h1", "Criteria definition #{CriteriaDefinition.last.id}"
+        assert_select "h5", "Criteria definition #{CriteriaDefinition.last.id}"
       end
     end
   end

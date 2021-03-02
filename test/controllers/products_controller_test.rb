@@ -58,7 +58,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       end
 
       test "should get the show product page" do
-        assert_select "h1", "Product #{Product.last.reference}"
+        assert_select "h5", "Product #{Product.last.reference}"
       end
     end
   end

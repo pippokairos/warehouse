@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2021_02_28_132521) do
   end
 
   create_table "products", primary_key: "reference", id: :string, force: :cascade do |t|
-    t.string "name"
-    t.string "category"
-    t.decimal "price", precision: 8, scale: 2
+    t.string "name", null: false
+    t.string "category", null: false
+    t.decimal "price", precision: 8, scale: 2, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

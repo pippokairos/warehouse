@@ -81,14 +81,28 @@ describe CriteriaDefinitionsController do
     end
 
     describe "failure" do
-      test "shouldn't create a new criteria definition if that's invalid" do
+      test "shouldn't create a new criteria definition if max_price is invalid" do
         assert_difference "CriteriaDefinition.count", 0 do
           post criteria_definitions_path, params: {
             criteria_definition: {
-              reference: "NEW",
-              name: "Test name",
-              category: "Test category",
-              price: "Not a number"
+              references: ["Reference test"],
+              categories: ["Category test"],
+              max_price: "Not a number",
+              destination: "New destination"
+            }
+          }
+        end
+        assert_select "div.alert-danger", /Criteria definition not valid/
+      end
+
+      test "shouldn't create a new criteria definition if references, categories and max_price are already present" do
+        assert_difference "CriteriaDefinition.count", 0 do
+          post criteria_definitions_path, params: {
+            criteria_definition: {
+              references: ["B1"],
+              categories: nil,
+              max_price: 10,
+              destination: "New destination"
             }
           }
         end
@@ -123,6 +137,19 @@ describe CriteriaDefinitionsController do
             categories: ["Category test"],
             max_price: 20,
             destination: nil
+          }
+        }
+        assert_select "div.alert-danger", /Criteria definition not valid/
+      end
+
+      test "shouldn't  update a criteria definition if references, categories and max_price are already present" do
+        criteria_definition = CriteriaDefinition.first
+        patch criteria_definition_path(criteria_definition), params: {
+          criteria_definition: {
+            references: ["B1"],
+            categories: nil,
+            max_price: 10,
+            destination: "New destination"
           }
         }
         assert_select "div.alert-danger", /Criteria definition not valid/

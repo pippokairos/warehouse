@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 2021_02_28_132521) do
     t.string "references", array: true
     t.string "categories", array: true
     t.decimal "max_price", precision: 8, scale: 2
-    t.string "destination"
+    t.string "destination", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["references", "categories", "max_price"], name: "index_cd_on_references_and_categories_and_max_price", unique: true
   end
 
   create_table "products", primary_key: "reference", id: :string, force: :cascade do |t|

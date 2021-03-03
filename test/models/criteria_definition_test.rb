@@ -26,4 +26,22 @@ class CriteriaDefinitionTest < ActiveSupport::TestCase
     criteria_definition = CriteriaDefinition.new(max_price: 20, destination: "Destination Test")
     assert 1, criteria_definition.degree_of_specificity
   end
+
+  test "degree of specificity should return 2 if two fields are present" do
+    criteria_definition = CriteriaDefinition.new(references: ["Test"], categories: ["Test"], destination: "Destination Test")
+    assert 2, criteria_definition.degree_of_specificity
+
+    criteria_definition = CriteriaDefinition.new(categories: ["Test"], max_price: 20, destination: "Destination Test")
+    assert 2, criteria_definition.degree_of_specificity
+
+    criteria_definition = CriteriaDefinition.new(references: ["Test"], max_price: 20, destination: "Destination Test")
+    assert 2, criteria_definition.degree_of_specificity
+  end
+
+  test "degree of specificity should return 3 if all the fields are present" do
+    criteria_definition = CriteriaDefinition.new(
+      references: ["Test"], categories: ["Test"], max_price: 20, destination: "Destination Test"
+    )
+    assert 3, criteria_definition.degree_of_specificity
+  end
 end

@@ -14,7 +14,7 @@ class RoutesControllerTest < ActionDispatch::IntegrationTest
     describe "success" do
       test "should show the destination for an existing product" do
         post search_routes_path, params: {
-          reference: "001"
+          reference: "A1"
         }
         assert_select "h5", /Destination/
       end

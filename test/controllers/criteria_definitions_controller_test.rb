@@ -36,7 +36,7 @@ describe CriteriaDefinitionsController do
   describe "GET criteria_definitions#edit" do
     describe "success" do
       before do 
-        get edit_criteria_definition_path(CriteriaDefinition.last)
+        get edit_criteria_definition_path(criteria_definitions("Amsterdam"))
       end
 
       test "should get the edit criteria definition page" do
@@ -54,11 +54,11 @@ describe CriteriaDefinitionsController do
   describe "GET criteria_definitions#show" do
     describe "success" do
       before do
-        get criteria_definition_path(CriteriaDefinition.last)
+        get criteria_definition_path(criteria_definitions("Amsterdam"))
       end
 
       test "should get the show criteria definition page" do
-        assert_select "h5", "Criteria definition #{CriteriaDefinition.last.id}"
+        assert_select "h5", "Criteria definition #{criteria_definitions("Amsterdam").id}"
       end
     end
   end
@@ -114,7 +114,7 @@ describe CriteriaDefinitionsController do
   describe "PATCH criteria_definitions#update" do
     describe "success" do
       test "should update a criteria definition if that's valid" do
-        criteria_definition = CriteriaDefinition.last
+        criteria_definition = criteria_definitions("Amsterdam")
         patch criteria_definition_path(criteria_definition), params: {
           criteria_definition: {
             references: ["Reference test"],
@@ -130,8 +130,7 @@ describe CriteriaDefinitionsController do
 
     describe "failure" do
       test "shouldn't update a criteria definition if that's invalid" do
-        criteria_definition = CriteriaDefinition.last
-        patch criteria_definition_path(criteria_definition), params: {
+        patch criteria_definition_path(criteria_definitions("Amsterdam")), params: {
           criteria_definition: {
             references: ["Reference test"],
             categories: ["Category test"],
@@ -142,14 +141,13 @@ describe CriteriaDefinitionsController do
         assert_select "div.alert-danger", /Criteria definition not valid/
       end
 
-      test "shouldn't  update a criteria definition if references, categories and max_price are already present" do
-        criteria_definition = CriteriaDefinition.first
-        patch criteria_definition_path(criteria_definition), params: {
+      test "shouldn't update a criteria definition if references, categories and max_price are already present" do
+        patch criteria_definition_path(criteria_definitions("Amsterdam")), params: {
           criteria_definition: {
-            references: ["B1"],
-            categories: nil,
+            references: ["B1", "B2"],
+            categories: ["Category B1", "Category B2"],
             max_price: 10,
-            destination: "New destination"
+            destination: "Amsterdam"
           }
         }
         assert_select "div.alert-danger", /Criteria definition not valid/
@@ -160,7 +158,7 @@ describe CriteriaDefinitionsController do
   describe "DELETE criteria_definitions#destroy" do
     describe "success" do
       test "should delete a criteria definition" do
-        criteria_definition = CriteriaDefinition.last
+        criteria_definition = criteria_definitions("Amsterdam")
         assert_difference "CriteriaDefinition.count", -1 do
           delete criteria_definition_path(criteria_definition)
         end

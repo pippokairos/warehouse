@@ -1,5 +1,3 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 "Amsterdam":
   references:
     - "A1"
@@ -33,3 +31,23 @@
   categories: null
   max_price: 10
   destination: Madrid
+
+"Berlin":
+  references:
+    - "C1"
+  categories: null
+  max_price: null
+  destination: Berlin
+
+"Moscow":
+  references: null
+  categories:
+    - "Category D1"
+  max_price: null
+  destination: Moscow
+
+"Paris":
+  references: null
+  categories: null
+  max_price: 0.99
+  destination: Paris

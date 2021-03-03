@@ -1,23 +1,29 @@
-1:
-  reference: "001"
-  name: "001"
-  category: "Electronics"
+"A1":
+  reference: "A1"
+  name: "A1"
+  category: "Category A1"
   price: 9.99
 
-2:
-  reference: "002"
-  name: "002"
-  category: "Electronics"
+"B1":
+  reference: "B1"
+  name: "B1"
+  category: "Category B1"
   price: 19.99
 
-3:
-  reference: "003"
-  name: "003"
-  category: "Electronics"
+"C1":
+  reference: "C1"
+  name: "C1"
+  category: "Category C1"
   price: 0.50
 
-4:
-  reference: "004"
-  name: "004"
-  category: "Electronics"
+"D1":
+  reference: "D1"
+  name: "D1"
+  category: "Category D1"
   price: 54.49
+
+"E1":
+  reference: "E1"
+  name: "E1"
+  category: "Category E1"
+  price: 24.99

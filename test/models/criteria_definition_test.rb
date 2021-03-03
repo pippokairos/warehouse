@@ -17,31 +17,18 @@ class CriteriaDefinitionTest < ActiveSupport::TestCase
   end
 
   test "degree of specificity should return 1 if only one field is present" do
-    criteria_definition = CriteriaDefinition.new(references: ["Test"], destination: "Destination Test")
-    assert 1, criteria_definition.degree_of_specificity
-
-    criteria_definition = CriteriaDefinition.new(categories: ["Test"], destination: "Destination Test")
-    assert 1, criteria_definition.degree_of_specificity
-
-    criteria_definition = CriteriaDefinition.new(max_price: 20, destination: "Destination Test")
-    assert 1, criteria_definition.degree_of_specificity
+    assert 1, criteria_definitions("London").degree_of_specificity
+    assert 1, criteria_definitions("Berlin").degree_of_specificity
+    assert 1, criteria_definitions("Paris").degree_of_specificity
+    assert 1, criteria_definitions("Moscow").degree_of_specificity
   end
 
   test "degree of specificity should return 2 if two fields are present" do
-    criteria_definition = CriteriaDefinition.new(references: ["Test"], categories: ["Test"], destination: "Destination Test")
-    assert 2, criteria_definition.degree_of_specificity
-
-    criteria_definition = CriteriaDefinition.new(categories: ["Test"], max_price: 20, destination: "Destination Test")
-    assert 2, criteria_definition.degree_of_specificity
-
-    criteria_definition = CriteriaDefinition.new(references: ["Test"], max_price: 20, destination: "Destination Test")
-    assert 2, criteria_definition.degree_of_specificity
+    assert 2, criteria_definitions("Madrid").degree_of_specificity
   end
 
   test "degree of specificity should return 3 if all the fields are present" do
-    criteria_definition = CriteriaDefinition.new(
-      references: ["Test"], categories: ["Test"], max_price: 20, destination: "Destination Test"
-    )
-    assert 3, criteria_definition.degree_of_specificity
+    assert 3, criteria_definitions("Amsterdam").degree_of_specificity
+    assert 3, criteria_definitions("Rome").degree_of_specificity
   end
 end
